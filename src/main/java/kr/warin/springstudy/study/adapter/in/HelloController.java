@@ -13,12 +13,12 @@ public class HelloController {
 
     @GetMapping("/workout")
     public String getDailyWorkout(){
-        return "Hello World";
+        return "Run a hard 5k!";
     }
 
     @GetMapping("/fortune")
     public String getDailyFortune(){
-        return "Hello World";
+        return "Today is your lucky day.";
     }
 
 
