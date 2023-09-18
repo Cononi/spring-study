@@ -1,5 +1,28 @@
+# Server Port 입력하기
 server:
   port: 8080
+
+# 스프링 애플리케이션 이름 지정
 spring:
   application:
-    name:
+    name: spring-study
+
+
+# Actuator 설정
+# 활성화할 End Point
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  info:
+    env:
+      enabled: true # env 환경설정 정보 노출 여부
+
+# Actuator App Info 사용자 지정 추가
+info:
+  app:
+    name: My Study App
+    description : 나는 개발자다. 그리고 내 앱은 살아 숨쉰다.
+    version: 1.0.0
+
