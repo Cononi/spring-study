@@ -1,0 +1,35 @@
+
+# Server Port \uC785\uB825\uD558\uAE30
+server:
+  port: 8080
+# \uC2A4\uD504\uB9C1 \uC560\uD50C\uB9AC\uCF00\uC774\uC158 \uC774\uB984 \uC9C0\uC815
+#  servlet:
+#    context-path: /test
+spring:
+  application:
+    name: spring-study
+# \uC2A4\uD504\uB9C1 \uBE48 \uC9C0\uC5F0 \uB85C\uB529\uC73C\uB85C \uB9CC\uB4E4\uAE30
+#  main:
+#    lazy-initialization: true
+
+# Actuator \uC124\uC815
+# \uD65C\uC131\uD654\uD560 End Point
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  info:
+    env:
+      enabled: true # env \uD658\uACBD\uC124\uC815 \uC815\uBCF4 \uB178\uCD9C \uC5EC\uBD80
+
+# Actuator App Info \uC0AC\uC6A9\uC790 \uC9C0\uC815 \uCD94\uAC00
+info:
+  app:
+    name: My Study App
+    description : \uB098\uB294 \uAC1C\uBC1C\uC790\uB2E4. \uADF8\uB9AC\uACE0 \uB0B4 \uC571\uC740 \uC0B4\uC544 \uC228\uC270\uB2E4.
+    version: 1.0.0
+
+my:
+  name : Cononi
+  age : 28
