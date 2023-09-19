@@ -26,3 +26,6 @@ info:
     description : 나는 개발자다. 그리고 내 앱은 살아 숨쉰다.
     version: 1.0.0
 
+my:
+  name : Cononi
+  age : 28
