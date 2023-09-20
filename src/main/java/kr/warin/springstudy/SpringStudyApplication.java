@@ -2,6 +2,7 @@ package kr.warin.springstudy;
 
 import kr.warin.springstudy.study.adapter.out.study.EntityManagerStudy;
 import kr.warin.springstudy.study.adapter.out.StudentEntity;
+import kr.warin.springstudy.study.application.port.out.study.SaveStudentPortStudy;
 import kr.warin.springstudy.study.domain.Student;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -18,19 +19,37 @@ public class SpringStudyApplication {
 	}
 
 	@Bean
-	public CommandLineRunner commandLineRunner(EntityManagerStudy EntityManagerStudy){
+	public CommandLineRunner commandLineRunner(SaveStudentPortStudy entityManagerStudy){
 
 		return runner -> {
-			createStudent(EntityManagerStudy);
+			createStudent(entityManagerStudy);
 		};
 	}
 
-	private void createStudent(EntityManagerStudy entityManagerStudy) {
-		StudentEntity student = Student.from(Student.builder()
+	private void createStudent(SaveStudentPortStudy entityManagerStudy) {
+		// Create
+		Student student = Student.builder()
 				.name("jj")
 				.email("h@h.com")
-				.build());
-		entityManagerStudy.save(student);
+				.build();
+		entityManagerStudy.saveStudent(student);
+
+		// Read
+		Student response = entityManagerStudy.findById(1L);
+		System.out.println("Student Data :" + response.getEmail());
+
+		// Update
+		StudentEntity studentEntity = StudentEntity.builder()
+				.id(response.getId())
+				.email("gg@gg.com")
+				.name(response.getName())
+				.build();
+		entityManagerStudy.updatedStudent(studentEntity);
+
+		// Delete
+		Student response2 = entityManagerStudy.findById(1L);
+		System.out.println("Student Delete Data :" + response2.getId());
+		entityManagerStudy.removeStudent(response2);
 	}
 
 

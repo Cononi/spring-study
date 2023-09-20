@@ -5,6 +5,7 @@ import jakarta.persistence.Table;
 import kr.warin.springstudy.common.BaseEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
 @SuperBuilder

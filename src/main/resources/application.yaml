@@ -23,7 +23,7 @@ spring:
     hibernate:
       # NONE으로 하는게 베스트고 사실상 아예 아무것도 설정하지 않는게 좋다.
       # 상용에서 이거 건들면 조진다. 진짜로
-      ddl-auto: update
+      ddl-auto: create
 
 # Actuator 설정
 # 활성화할 End Point
