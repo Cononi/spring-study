@@ -9,14 +9,13 @@ spring:
   application:
     name: spring-study
   # PostgreSQL \uB370\uC774\uD130\uBCA0\uC774\uC2A4 \uC5F0\uACB0 \uC815\uBCF4
-  spring:
-    datasource:
+  datasource:
       url: jdbc:postgresql://localhost:5432/study
       username: study
       password: qweasdzxc12!
       driver-class-name: org.postgresql.Driver
     # JPA \uC124\uC815
-    jpa:
+  jpa:
       show-sql: true # SQL \uCFFC\uB9AC \uBCF4\uC774\uAE30 (\uAC1C\uBC1C \uD658\uACBD\uC5D0\uC11C \uC720\uC6A9)
       properties:
         hibernate:
