@@ -1,4 +1,4 @@
 package kr.warin.springstudy.study.application.port.out;
 
-public interface SaveStudentPort {
+public interface GetStudentPort {
 }
