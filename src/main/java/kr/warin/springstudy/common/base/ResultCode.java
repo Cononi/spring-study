@@ -1,4 +1,4 @@
-package kr.warin.springstudy.common;
+package kr.warin.springstudy.common.base;
 
 import lombok.Getter;
 

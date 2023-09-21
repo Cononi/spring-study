@@ -2,10 +2,9 @@ package kr.warin.springstudy.study.adapter.out;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import kr.warin.springstudy.common.BaseEntity;
+import kr.warin.springstudy.common.base.BaseEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
 @SuperBuilder
