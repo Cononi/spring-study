@@ -4,7 +4,7 @@ import kr.warin.springstudy.study.adapter.out.StudentEntity;
 import kr.warin.springstudy.study.domain.Student;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 // 나는 변환만을 담당.!
 public class EntityManagerMapperStudy {
 

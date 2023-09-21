@@ -2,9 +2,11 @@ package kr.warin.springstudy.study.adapter.in;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/study/exit")
 public class HelloController {
 
     @Value("${my.name}")

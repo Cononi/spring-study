@@ -6,9 +6,11 @@ import kr.warin.springstudy.study.application.port.out.study.SaveStudentPortStud
 import kr.warin.springstudy.study.domain.Student;
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RequiredArgsConstructor
-@PersistenceAdapter
-// 난 영속성 관련 CRUD와 결합만 담당.
+//@PersistenceAdapter
 public class EntityManagerAdapterStudy implements SaveStudentPortStudy {
 
     private final EntityManagerStudy entityManagerStudy;
@@ -31,10 +33,16 @@ public class EntityManagerAdapterStudy implements SaveStudentPortStudy {
     public void updatedStudent(StudentEntity student) {
         entityManagerStudy.update(student);
     }
-
+    @Override
     public void removeStudent(Student student){
         entityManagerStudy.delete(
-                entityManagerMapperStudy.mapToEntity(student)
+                entityManagerStudy.findById(student.id())
         );
+    }
+    @Override
+    public List<Student> findAll() {
+        return entityManagerStudy.findAll()
+                .stream().map(Student::from)
+                .collect(Collectors.toList());
     }
 }

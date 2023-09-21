@@ -10,6 +10,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
+import java.util.List;
+
 @EnableJpaAuditing
 @SpringBootApplication
 public class SpringStudyApplication {
@@ -18,6 +20,7 @@ public class SpringStudyApplication {
 		SpringApplication.run(SpringStudyApplication.class, args);
 	}
 
+	/**
 	@Bean
 	public CommandLineRunner commandLineRunner(SaveStudentPortStudy entityManagerStudy){
 
@@ -36,21 +39,26 @@ public class SpringStudyApplication {
 
 		// Read
 		Student response = entityManagerStudy.findById(1L);
-		System.out.println("Student Data :" + response.getEmail());
+		System.out.println("Student Data :" + response.id());
 
 		// Update
 		StudentEntity studentEntity = StudentEntity.builder()
-				.id(response.getId())
+				.id(response.id())
 				.email("gg@gg.com")
-				.name(response.getName())
+				.name(response.name())
 				.build();
 		entityManagerStudy.updatedStudent(studentEntity);
 
-		// Delete
-		Student response2 = entityManagerStudy.findById(1L);
-		System.out.println("Student Delete Data :" + response2.getId());
-		entityManagerStudy.removeStudent(response2);
-	}
+		// 전체 조회
+		List<Student> domains = entityManagerStudy.findAll();
+		for(Student s : domains) {
+			System.out.println("Student" + s);
+		}
 
+		// Delete
+		System.out.println("Student DELETE" + response);
+		entityManagerStudy.removeStudent(response);
+    }
+	*/
 
 }

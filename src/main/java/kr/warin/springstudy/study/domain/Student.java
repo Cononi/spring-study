@@ -6,17 +6,14 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
 @Builder
-public class Student {
-    private Long id;
-    private String name;
-    private String email;
+public record Student(Long id, String name, String email) {
 
     public static StudentEntity from(Student entity) {
         return StudentEntity.builder()
-                .name(entity.getName())
-                .email(entity.getEmail())
+                .id(entity.id())
+                .name(entity.name())
+                .email(entity.email())
                 .build();
     }
 
