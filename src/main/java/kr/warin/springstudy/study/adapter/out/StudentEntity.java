@@ -14,5 +14,6 @@ import lombok.experimental.SuperBuilder;
 @Table(name="student")
 public class StudentEntity extends BaseEntity {
     private String name;
+    private int age;
     private String email;
 }

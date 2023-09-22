@@ -33,6 +33,7 @@ public class EntityManagerAdapterStudy implements SaveStudentPortStudy {
     public void updatedStudent(StudentEntity student) {
         entityManagerStudy.update(student);
     }
+
     @Override
     public void removeStudent(Student student){
         entityManagerStudy.delete(

@@ -1,0 +1,8 @@
+-- INSERT INTO student(id,name,age,email)
+-- VALUES  (1,'kjj', 22,'k@kr.com'),
+--         (2,'gjj', 30,'g@kr.com'),
+--         (3,'tjj', 34,'t@kr.com'),
+--         (4,'ljj', 50,'l@kr.com'),
+--         (5,'ojj', 14,'o@kr.com'),
+--         (6,'ejj', 17,'e@kr.com')
+-- ;

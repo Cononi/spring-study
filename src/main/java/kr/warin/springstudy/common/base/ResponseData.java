@@ -33,4 +33,8 @@ public record ResponseData<T> (
     public static <T> ResponseData<T> fail(T data) {
         return new ResponseData<>(ResultCode.FAIL, data);
     }
+
+    public static <T> ResponseData<T> fail(ResultCode code,T data) {
+        return new ResponseData<>(code, data);
+    }
 }

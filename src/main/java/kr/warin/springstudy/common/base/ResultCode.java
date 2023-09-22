@@ -5,6 +5,7 @@ import lombok.Getter;
 @Getter
 public enum ResultCode {
     SUCCESS("0000", "SUCCESS"),
+    SAME("1000", "이미 존재하는 값 입니다."),
     FAIL("9999", "RESPONSE FAIL");
 
     private final String code;
