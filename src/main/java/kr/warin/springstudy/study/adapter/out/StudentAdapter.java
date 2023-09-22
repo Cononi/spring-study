@@ -42,7 +42,7 @@ public class StudentAdapter implements LoadStudentPort, SendStudentPort {
                 .findAll()
                 .stream()
                 .map(studentMapper::mapToDomainEntity)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     @Override

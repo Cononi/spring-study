@@ -11,5 +11,4 @@ public interface LoadStudentPort {
     boolean isStudent(Long id);
     List<Student> loadStudents();
 
-
 }

@@ -44,6 +44,6 @@ public class EntityManagerAdapterStudy implements SaveStudentPortStudy {
     public List<Student> findAll() {
         return entityManagerStudy.findAll()
                 .stream().map(Student::from)
-                .collect(Collectors.toList());
+                .toList();
     }
 }
