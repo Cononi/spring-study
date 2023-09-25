@@ -1,6 +1,7 @@
 package kr.warin.springstudy.study.adapter.in;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import kr.warin.springstudy.common.base.ResponseData;
 import kr.warin.springstudy.study.application.port.in.StudentUseCase;
 import kr.warin.springstudy.study.domain.Student;
 import org.junit.jupiter.api.DisplayName;
@@ -14,7 +15,10 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import static org.mockito.BDDMockito.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -75,10 +79,15 @@ class StudentControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
-    @DisplayName("[GET LIST] Student 모든 정보를 받아옴")
-    @Test
-    void getStudents() {
-    }
+//    @DisplayName("[GET LIST] Student 모든 정보를 받아옴")
+//    @Test
+//    void getStudents() throws Exception {
+//        MvcResult result = mockMvc.perform(
+//                get("/api/students"))
+//                .andReturn();
+//        String data = result.getResponse().getContentAsString();
+//        ResponseData<List<Student>> response = objectMapper.readValue(data, ResponseData.class);
+//    }
 
 
     @DisplayName("[PUT] Student 정보를 수정")
