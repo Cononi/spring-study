@@ -35,6 +35,7 @@ public class SecurityConfig {
     }
 
     @Bean
+    // 인메모리에 생성되는 계정지정
     public InMemoryUserDetailsManager inMemoryUserDetailsManager() {
         UserDetails john = User.builder()
                 .username("john")
