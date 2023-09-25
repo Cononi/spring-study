@@ -8,6 +8,7 @@ import kr.warin.springstudy.study.application.port.in.StudentUseCase;
 import kr.warin.springstudy.study.domain.Student;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +22,7 @@ import java.util.List;
 public class StudentController {
 
     private final StudentUseCase studentUseCase;
+
     @GetMapping("/student/{id}")
     public ResponseData<Student> getStudent(@PathVariable Long id) {
         return ResponseData.ok(studentUseCase.loadStudent(id));
@@ -30,18 +32,24 @@ public class StudentController {
     public void addStudent(@Valid @RequestBody Student student) {
         studentUseCase.saveStudent(student);
     }
+
     @PutMapping("/student/{id}")
-    public void updateStudent(@PathVariable Long id, @RequestBody Student student){
-        studentUseCase.updateStudent(id,student);
+    public void updateStudent(@PathVariable Long id, @RequestBody Student student) {
+        studentUseCase.updateStudent(id, student);
+    }
+
+    @GetMapping("/student/page")
+    public ResponseData<Page<Student>> getStudentPage() {
+        return ResponseData.ok(studentUseCase.loadStudentPage());
     }
 
     @DeleteMapping("/student/{id}")
-    public void deleteStudent(@PathVariable Long id){
+    public void deleteStudent(@PathVariable Long id) {
         studentUseCase.deleteStudent(id);
     }
 
     @GetMapping("/students")
     public ResponseData<List<Student>> getStudents() {
-        return ResponseData.ok(studentUseCase.loadStudents());
+        return ResponseData.fail(studentUseCase.loadStudents());
     }
 }

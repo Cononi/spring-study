@@ -9,6 +9,7 @@ import kr.warin.springstudy.study.application.port.out.SendStudentPort;
 import kr.warin.springstudy.study.domain.Student;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -43,7 +44,16 @@ public class StudentService implements StudentUseCase {
     }
 
     @Override
+    public Page<Student> loadStudentPage() {
+        return loadStudentPort.loadStudentPage();
+    }
+
+    @Override
     public List<Student> loadStudents() {
+        List<Student> students = loadStudentPort.loadStudents();
+        if(students.isEmpty()){
+            throw new EntityDataNotFoundException(ResultCode.NONE_LIST);
+        }
         return loadStudentPort.loadStudents();
     }
 

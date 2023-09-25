@@ -9,10 +9,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
 import java.util.List;
 
 @EnableJpaAuditing
+@EnableWebSecurity
 @SpringBootApplication
 public class SpringStudyApplication {
 
@@ -21,7 +23,7 @@ public class SpringStudyApplication {
 	}
 
 	/**
-	@Bean
+//	@Bean
 	public CommandLineRunner commandLineRunner(SaveStudentPortStudy entityManagerStudy){
 
 		return runner -> {

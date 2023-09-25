@@ -8,6 +8,9 @@ import kr.warin.springstudy.study.application.port.out.SendStudentPort;
 import kr.warin.springstudy.study.domain.Student;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,6 +31,14 @@ public class StudentAdapter implements LoadStudentPort, SendStudentPort {
                 studentRepository.findById(id)
                         .orElseThrow(() -> new EntityDataNotFoundException(ResultCode.FAIL))
         );
+    }
+
+    @Override
+    public Page<Student> loadStudentPage() {
+        Pageable pageable = PageRequest.of(0,10);
+        return studentRepository
+                .findAll(pageable)
+                .map(studentMapper::mapToDomainEntity);
     }
 
     @Override
