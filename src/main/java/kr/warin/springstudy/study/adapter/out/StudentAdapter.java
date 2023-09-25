@@ -34,8 +34,7 @@ public class StudentAdapter implements LoadStudentPort, SendStudentPort {
     }
 
     @Override
-    public Page<Student> loadStudentPage() {
-        Pageable pageable = PageRequest.of(0,10);
+    public Page<Student> loadStudentPage(Pageable pageable) {
         return studentRepository
                 .findAll(pageable)
                 .map(studentMapper::mapToDomainEntity);

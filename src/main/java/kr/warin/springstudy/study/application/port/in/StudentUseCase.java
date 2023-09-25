@@ -12,7 +12,7 @@ public interface StudentUseCase {
     Student loadStudent(Long id);
     List<Student> loadStudents();
 
-    Page<Student> loadStudentPage();
+    Page<Student> loadStudentPage(int page, int size);
 
     void deleteStudent(Long id);
 

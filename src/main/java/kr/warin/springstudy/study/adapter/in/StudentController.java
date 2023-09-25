@@ -38,11 +38,6 @@ public class StudentController {
         studentUseCase.updateStudent(id, student);
     }
 
-    @GetMapping("/student/page")
-    public ResponseData<Page<Student>> getStudentPage() {
-        return ResponseData.ok(studentUseCase.loadStudentPage());
-    }
-
     @DeleteMapping("/student/{id}")
     public void deleteStudent(@PathVariable Long id) {
         studentUseCase.deleteStudent(id);
@@ -50,6 +45,11 @@ public class StudentController {
 
     @GetMapping("/students")
     public ResponseData<List<Student>> getStudents() {
-        return ResponseData.fail(studentUseCase.loadStudents());
+        return ResponseData.ok(studentUseCase.loadStudents());
+    }
+
+    @GetMapping("/student/{page}/{size}")
+    public ResponseData<Page<Student>> getStudentPage(@PathVariable int page, @PathVariable int size) {
+        return ResponseData.ok(studentUseCase.loadStudentPage(page,size));
     }
 }
