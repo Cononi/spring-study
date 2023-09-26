@@ -1,6 +1,6 @@
 package kr.warin.springstudy.study.adapter.out;
 
-import kr.warin.springstudy.annotation.PersistenceAdapter;
+import kr.warin.springstudy.common.annotation.PersistenceAdapter;
 import kr.warin.springstudy.common.base.ResultCode;
 import kr.warin.springstudy.common.exceptions.EntityDataNotFoundException;
 import kr.warin.springstudy.study.application.port.out.LoadStudentPort;
@@ -9,11 +9,9 @@ import kr.warin.springstudy.study.domain.Student;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @PersistenceAdapter

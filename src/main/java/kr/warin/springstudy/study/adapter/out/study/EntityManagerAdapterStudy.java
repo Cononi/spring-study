@@ -1,13 +1,11 @@
 package kr.warin.springstudy.study.adapter.out.study;
 
-import kr.warin.springstudy.annotation.PersistenceAdapter;
 import kr.warin.springstudy.study.adapter.out.StudentEntity;
 import kr.warin.springstudy.study.application.port.out.study.SaveStudentPortStudy;
 import kr.warin.springstudy.study.domain.Student;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 //@PersistenceAdapter

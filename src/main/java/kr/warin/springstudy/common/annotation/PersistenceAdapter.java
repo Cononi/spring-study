@@ -1,4 +1,4 @@
-package kr.warin.springstudy.annotation;
+package kr.warin.springstudy.common.annotation;
 
 import org.springframework.core.annotation.AliasFor;
 import org.springframework.stereotype.Component;
