@@ -13,11 +13,8 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.JdbcUserDetailsManager;
-import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 import javax.sql.DataSource;
@@ -38,10 +35,10 @@ public class SecurityConfig {
         http.authorizeHttpRequests(configurer ->
                 configurer
                         .requestMatchers(HttpMethod.GET, "/api/students").hasRole("USER")
-                        .requestMatchers(HttpMethod.GET, "/api/student/**").hasRole("EMPLOYEE")
-                        .requestMatchers(HttpMethod.POST, "/api/student").hasRole("MANAGER")
-                        .requestMatchers(HttpMethod.PUT, "/api/student/**").hasRole("MANAGER")
-                        .requestMatchers(HttpMethod.DELETE, "/api/student/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/api/student/**").hasRole("USER")
+                        .requestMatchers(HttpMethod.POST, "/api/student").hasRole("USER")
+                        .requestMatchers(HttpMethod.PUT, "/api/student/**").hasRole("USER")
+                        .requestMatchers(HttpMethod.DELETE, "/api/student/**").hasRole("USER")
                         .requestMatchers(HttpMethod.GET,"/api/user/create").permitAll()
                         .anyRequest().permitAll()
         );
