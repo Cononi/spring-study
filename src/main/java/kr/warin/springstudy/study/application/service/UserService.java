@@ -9,10 +9,10 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class UserService implements UserUseCase {
-    private final UserPort userPort;
+//    private final UserPort userPort;
 
     @Override
     public void createUser(UserInfo user) {
-        userPort.creat(user);
+//        userPort.creat(user);
     }
 }

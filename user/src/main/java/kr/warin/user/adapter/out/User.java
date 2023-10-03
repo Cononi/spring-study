@@ -10,6 +10,7 @@ import lombok.experimental.SuperBuilder;
 @Getter
 @Entity
 @SuperBuilder
+@Table(name = "users")
 @NoArgsConstructor
 public class User extends BaseEntity {
     private String username;
@@ -17,4 +18,6 @@ public class User extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     private Role role;
+
+
 }

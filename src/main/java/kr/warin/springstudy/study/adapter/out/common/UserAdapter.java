@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @RequiredArgsConstructor
-@PersistenceAdapter
+//@PersistenceAdapter
 public class UserAdapter implements UserPort {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;

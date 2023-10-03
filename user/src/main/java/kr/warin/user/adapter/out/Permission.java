@@ -4,6 +4,7 @@ package kr.warin.user.adapter.out;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+@Getter
 @RequiredArgsConstructor
 public enum Permission {
 
@@ -16,7 +17,6 @@ public enum Permission {
     USER_UPDATE("user:update"),
     USER_DELETE("user:delete");
 
-    @Getter
     private final String permission;
 
 }

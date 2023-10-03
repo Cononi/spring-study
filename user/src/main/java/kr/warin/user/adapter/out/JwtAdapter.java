@@ -1,37 +1,38 @@
-package kr.warin.user.application.service;
+package kr.warin.user.adapter.out;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.interfaces.DecodedJWT;
-import kr.warin.user.application.port.in.JwtUseCase;
-import kr.warin.user.common.base.ResultCode;
-import kr.warin.user.common.exceptions.EntityDataNotFoundException;
+import kr.warin.user.application.port.out.JwtPort;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 @Service
-public class JwtService implements JwtUseCase {
+@Slf4j
+public class JwtAdapter implements JwtPort {
 
     @Value("${secret.jwt.key}")
     private String secretKey; // 시크릿키
     @Value("${secret.jwt.issuer}")
     private String issuer; // 발행자
 
+
+
     @Override
-    public String createAccessToken(String username) {
+    public String createAccessToken(UserDetails userDetails) {
         return JWT.create()
                 .withIssuer(issuer)
-                .withSubject("hong") // 작성자
+                .withSubject(userDetails.getUsername()) // 작성자
                 .withExpiresAt(createDate(LocalDateTime.now().plusMinutes(30))) // 만료일
                 .withIssuedAt(createDate(LocalDateTime.now()))   // 생성일
                 .sign(Algorithm.HMAC512(secretKey));
     }
 
     @Override
-    public String createRefreshToken(String username) {
+    public String createRefreshToken(UserDetails userDetails) {
         return JWT.create()
                 .withExpiresAt(createDate(LocalDateTime.now().plusMonths(1))) // 만료일
                 .withIssuedAt(createDate(LocalDateTime.now()))   // 생성일
@@ -39,9 +40,9 @@ public class JwtService implements JwtUseCase {
     }
 
     @Override
-    public DecodedJWT verifyToken(String token) {
-
-        return jwtVerifier(token,secretKey);
+    public boolean verifyToken(String token, UserDetails userDetails) {
+        return jwtVerifier(token,secretKey)
+                .equals(userDetails.getUsername());
     }
 
 }
