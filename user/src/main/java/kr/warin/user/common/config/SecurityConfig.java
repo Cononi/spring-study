@@ -37,6 +37,7 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
+    // 인증을 담당하는 객체로 사용자가 제공한 자격 증명을 특정 인증 메커니즘을 사용하여 검증 처리
     @Bean
     public AuthenticationProvider authenticationProvider(){
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
@@ -45,6 +46,7 @@ public class SecurityConfig {
         return authProvider;
     }
 
+    // 빈으로 등록해서 IOC 컨테이너가 관리하게 만듬.
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception{
         return config.getAuthenticationManager();

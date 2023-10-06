@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/user")
 public class UserController {
-    private final UserUseCase userUseCase;
     private final JwtUseCase jwtUseCase;
 
     @GetMapping("/test")

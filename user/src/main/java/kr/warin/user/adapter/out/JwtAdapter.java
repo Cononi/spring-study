@@ -34,6 +34,7 @@ public class JwtAdapter implements JwtPort {
     @Override
     public String createRefreshToken(UserDetails userDetails) {
         return JWT.create()
+                .withSubject(userDetails.getUsername()) // 작성자
                 .withExpiresAt(createDate(LocalDateTime.now().plusMonths(1))) // 만료일
                 .withIssuedAt(createDate(LocalDateTime.now()))   // 생성일
                 .sign(Algorithm.HMAC512(secretKey));
@@ -41,7 +42,7 @@ public class JwtAdapter implements JwtPort {
 
     @Override
     public boolean verifyToken(String token, UserDetails userDetails) {
-        return jwtVerifier(token,secretKey)
+        return jwtVerifier(token,secretKey,issuer)
                 .equals(userDetails.getUsername());
     }
 

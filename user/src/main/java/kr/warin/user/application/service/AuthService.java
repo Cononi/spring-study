@@ -10,7 +10,6 @@ import kr.warin.user.domain.UserInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -32,7 +31,8 @@ public class AuthService implements JwtUseCase {
                         .build()
         );
         return Token.builder()
-                .token(jwtPort.createAccessToken(applicationUser))
+                .accessToken(jwtPort.createAccessToken(applicationUser))
+                .refreshToken(jwtPort.createRefreshToken(applicationUser))
                 .build();
     }
 
@@ -44,9 +44,10 @@ public class AuthService implements JwtUseCase {
                         userInfo.password()
                 )
         );
-        UserDetails userDetails = userPort.findByUsername(userInfo.username());
+        ApplicationUser applicationUser = userPort.findByUsername(userInfo.username());
         return Token.builder()
-                .token(jwtPort.createAccessToken(userDetails))
+                .accessToken(jwtPort.createAccessToken(applicationUser))
+                .refreshToken(jwtPort.createRefreshToken(applicationUser))
                 .build();
     }
 }

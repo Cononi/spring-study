@@ -1,9 +1,19 @@
 package kr.warin.user.common.base;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import jakarta.servlet.http.HttpServletResponse;
+import kr.warin.user.common.exceptions.EntityDataNotFoundException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.MediaType;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.Optional;
 
+@Slf4j
 public record ResponseData<T> (
         @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
         LocalDateTime timestamp,
@@ -36,5 +46,13 @@ public record ResponseData<T> (
 
     public static <T> ResponseData<T> fail(ResultCode code,T data) {
         return new ResponseData<>(code, data);
+    }
+    public static void filterResponse(HttpServletResponse response, ResultCode code) throws IOException {
+        String json = Optional.of(new ObjectMapper().registerModule(new JavaTimeModule())
+                        .writeValueAsString(new ResponseData<>(code, response.getStatus())))
+                .orElseThrow(() -> new EntityDataNotFoundException(ResultCode.FAIL));
+        response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+        log.info("Test : {}", json);
+        response.getWriter().write(json);
     }
 }
